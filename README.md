@@ -4,7 +4,7 @@ A React TypeScript application that allows users to create, edit, and manage Mar
 
 ## Features
 
-- **Offline-First**: Create, edit, and delete notes even when offline
+- **Offline-First**: Create and edit notes even when offline
 - **Markdown Support**: Write notes in Markdown format with live preview
 - **Auto-Save**: Changes are automatically saved with debounce (500ms)
 - **Sync Status**: Visual indicators show sync status for each note
