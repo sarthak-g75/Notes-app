@@ -42,7 +42,9 @@ function App() {
   const loadNotes = useCallback(async () => {
     try {
       const allNotes = await db.table('notes').where('deleted').equals(0).toArray();
-      setNotes(allNotes);
+      const sortedNotes = allNotes.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+      console.log('Loaded notes:', sortedNotes);
+      setNotes(sortedNotes);
     } catch (error) {
       console.error('Failed to load notes:', error);
     }
@@ -217,7 +219,10 @@ function App() {
 
         if (selectedNote && selectedNote.id === id) {
           const updated = await db.table('notes').get(id);
-          if (updated) setSelectedNote(updated);
+          if (updated){
+             setSelectedNote(updated);
+            loadNotes()
+          }
         }
 
         if (isOnline) {
